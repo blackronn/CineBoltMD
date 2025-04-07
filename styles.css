@@ -1,0 +1,365 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a1014;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #141e24;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-brand h1 {
+    color: #00d4ff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #00d4ff;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #1c2526;
+    border-radius: 20px;
+    padding: 0.5rem;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 0.5rem;
+    width: 200px;
+    outline: none;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    color: #00d4ff;
+    cursor: pointer;
+}
+
+.user-profile {
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://via.placeholder.com/1920x1080') center/cover;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #00d4ff;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    background-color: #00d4ff;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Featured Section */
+.featured-section {
+    padding: 4rem 2rem;
+}
+
+.featured-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #00d4ff;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-card {
+    background-color: #1c2526;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+.movie-info p {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating {
+    color: #00d4ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating .fa-star {
+    color: #ffd700;
+}
+
+.vote-count {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.movie-details span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.movie-details i {
+    color: #00d4ff;
+}
+
+/* Categories Section */
+.categories-section {
+    padding: 4rem 2rem;
+    background-color: #141e24;
+}
+
+.categories-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #00d4ff;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-card {
+    background-color: #1c2526;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    background-color: #00d4ff;
+}
+
+.category-card:hover i,
+.category-card:hover h3,
+.category-card:hover p {
+    color: #ffffff;
+}
+
+.category-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #00d4ff;
+    transition: color 0.3s ease;
+}
+
+.category-card h3 {
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.category-card p {
+    color: #888;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+/* Footer */
+.footer {
+    background-color: #141e24;
+    padding: 4rem 2rem 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: #00d4ff;
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #00d4ff;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: #ffffff;
+    font-size: 1.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #1c2526;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        margin: 1rem 0;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .movie-grid,
+    .category-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+} 
