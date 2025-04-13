@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies - CineBolt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">
+                <img src="assets/images/cinebolt-logo.png" alt="CineBolt" class="brand-logo">
+                <span class="brand-text">CineBolt</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-trigger">Movies <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="movies.html?type=popular">Popular</a>
+                    <a href="movies.html?type=top_rated">Top Rated</a>
+                    <a href="movies.html?type=now_playing">Now Playing</a>
+                    <a href="movies.html?type=upcoming">Coming Soon</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-trigger">Genres <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="movies.html?genre=28">Action</a>
+                    <a href="movies.html?genre=12">Adventure</a>
+                    <a href="movies.html?genre=35">Comedy</a>
+                    <a href="movies.html?genre=18">Drama</a>
+                    <a href="movies.html?genre=27">Horror</a>
+                    <a href="movies.html?genre=878">Sci-Fi</a>
+                    <a href="movies.html?genre=10749">Romance</a>
+                    <a href="movies.html?genre=53">Thriller</a>
+                    <a href="movies.html?genre=16">Animation</a>
+                    <a href="movies.html?genre=99">Documentary</a>
+                </div>
+            </div>
+            <a href="movies.html?type=top250" id="top250Link">Top 250</a>
+        </div>
+        <div class="nav-actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search movies, actors, directors...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons">
+                <button id="loginBtn" class="auth-btn">Login</button>
+                <button id="registerBtn" class="auth-btn">Register</button>
+            </div>
+            <div class="user-profile hidden">
+                <a href="profile.html" class="profile-link"><i class="fas fa-user"></i> Profilim</a>
+                <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Movies Grid Section -->
+    <div class="movies-container">
+        <div class="filters-section">
+            <h2 id="categoryTitle">Movies</h2>
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Sort By:</label>
+                    <select id="sortFilter">
+                        <option value="popularity.desc">Popularity</option>
+                        <option value="vote_average.desc">Rating</option>
+                        <option value="release_date.desc">Release Date</option>
+                        <option value="title.asc">Title</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Year:</label>
+                    <select id="yearFilter">
+                        <option value="">All Years</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Rating:</label>
+                    <select id="ratingFilter">
+                        <option value="">All Ratings</option>
+                        <option value="7">7+ Rating</option>
+                        <option value="8">8+ Rating</option>
+                        <option value="9">9+ Rating</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="movies-grid" id="moviesGrid"></div>
+        <div class="pagination" id="pagination">
+            <button id="prevPage" class="page-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+            <span id="currentPage">Page 1</span>
+            <button id="nextPage" class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CineBolt</h3>
+                <p>Comprehensive movie database and rating platform</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CineBolt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/tmdbService.js"></script>
+    <script type="module" src="js/authService.js"></script>
+    <script type="module" src="js/movies.js"></script>
+</body>
+</html> 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineBolt - Movie Database</title>
+    <title>Profile - CineBolt</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+            <a href="index.html">Home</a>
             <div class="dropdown">
                 <a href="#" class="dropdown-trigger">Movies <i class="fas fa-chevron-down"></i></a>
                 <div class="dropdown-content">
@@ -59,6 +59,52 @@
             </div>
         </div>
     </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-info">
+                <h1>My Profile</h1>
+                <p id="userEmailDisplay"></p>
+            </div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <span id="totalRatings">0</span>
+                    <label>My Ratings</label>
+                </div>
+                <div class="stat-item">
+                    <span id="totalWatchlist">0</span>
+                    <label>My Watchlist</label>
+                </div>
+                <div class="stat-item">
+                    <span id="totalFavorites">0</span>
+                    <label>My Favorites</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content">
+            <div class="list-category">
+                <h3>My Rated Movies</h3>
+                <div class="movie-grid" id="ratedMovies">
+                    <!-- Değerlendirilen filmler buraya eklenecek -->
+                </div>
+            </div>
+
+            <div class="list-category">
+                <h3>My Watchlist</h3>
+                <div class="movie-grid" id="watchlistMovies">
+                    <!-- İzleme listesindeki filmler buraya eklenecek -->
+                </div>
+            </div>
+
+            <div class="list-category">
+                <h3>My Favorites</h3>
+                <div class="movie-grid" id="favoriteMovies">
+                    <!-- Favori filmler buraya eklenecek -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Login Modal -->
     <div id="loginModal" class="modal">
@@ -102,106 +148,11 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to the World of Cinema</h1>
-            <p>Millions of movies, reviews and ratings</p>
-            <button class="cta-button">Start Exploring</button>
-        </div>
-    </section>
-
-    <!-- Movie Sections -->
-    <section class="movie-section">
-        <div class="section-header">
-            <h2>Trending Now</h2>
-            <div class="scroll-buttons">
-                <button class="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <button class="scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="movie-row" id="trending-movies"></div>
-    </section>
-
-    <section class="movie-section">
-        <div class="section-header">
-            <h2>Top Rated</h2>
-            <div class="scroll-buttons">
-                <button class="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <button class="scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="movie-row" id="top-rated-movies"></div>
-    </section>
-
-    <section class="movie-section">
-        <div class="section-header">
-            <h2>Coming Soon</h2>
-            <div class="scroll-buttons">
-                <button class="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <button class="scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="movie-row" id="upcoming-movies"></div>
-    </section>
-
-    <section class="movie-section">
-        <div class="section-header">
-            <h2>Action & Adventure</h2>
-            <div class="scroll-buttons">
-                <button class="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <button class="scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="movie-row" id="action-movies"></div>
-    </section>
-
-    <section class="movie-section">
-        <div class="section-header">
-            <h2>Drama</h2>
-            <div class="scroll-buttons">
-                <button class="scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <button class="scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
-        </div>
-        <div class="movie-row" id="drama-movies"></div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>CineBolt</h3>
-                <p>Comprehensive movie database and rating platform</p>
-            </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 CineBolt. All rights reserved.</p>
-        </div>
-    </footer>
-
     <!-- Scripts -->
     <script type="module" src="js/config.js"></script>
     <script type="module" src="js/tmdbService.js"></script>
     <script type="module" src="js/authService.js"></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/userService.js"></script>
+    <script type="module" src="js/profile.js"></script>
 </body>
-</html>
-<script type="module" src="js/firestore-init.js"></script>
+</html> 

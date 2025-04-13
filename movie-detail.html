@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details - CineBolt</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">
+                <img src="assets/images/cinebolt-logo.png" alt="CineBolt" class="brand-logo">
+                <span class="brand-text">CineBolt</span>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-trigger">Movies <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="movies.html?type=popular">Popular</a>
+                    <a href="movies.html?type=top_rated">Top Rated</a>
+                    <a href="movies.html?type=now_playing">Now Playing</a>
+                    <a href="movies.html?type=upcoming">Coming Soon</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#" class="dropdown-trigger">Genres <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="movies.html?genre=28">Action</a>
+                    <a href="movies.html?genre=12">Adventure</a>
+                    <a href="movies.html?genre=35">Comedy</a>
+                    <a href="movies.html?genre=18">Drama</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="search-bar">
+                <input type="text" placeholder="Search movies, actors, directors...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="auth-buttons">
+                <button id="loginBtn" class="auth-btn">Login</button>
+                <button id="registerBtn" class="auth-btn">Register</button>
+            </div>
+            <div class="user-profile hidden">
+                <a href="profile.html" class="profile-link"><i class="fas fa-user"></i> Profilim</a>
+                <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Movie Detail Section -->
+    <div class="movie-detail-container">
+        <div class="movie-backdrop">
+            <div class="backdrop-overlay"></div>
+        </div>
+        
+        <div id="api-error" style="display: none; background-color: #ff4444; color: white; padding: 20px; margin: 20px; border-radius: 5px; text-align: center;">
+            <h2>API Connection Error</h2>
+            <p id="error-message">There was an error connecting to the movie database.</p>
+            <button onclick="location.reload()" style="background: white; color: #ff4444; border: none; padding: 10px 20px; margin-top: 10px; border-radius: 5px; cursor: pointer;">Retry</button>
+        </div>
+        
+        <div class="movie-content">
+            <div class="movie-poster">
+                <img id="moviePoster" src="" alt="">
+            </div>
+            
+            <div class="movie-info">
+                <h1 id="movieTitle"></h1>
+                
+                <div class="movie-meta">
+                    <div class="rating-section">
+                        <div class="bmd-rating">
+                            <img src="assets/images/logo-rating.png" alt="BMD Logo" class="bmd-logo">
+                            <div class="rating-stats">
+                                <span class="average-rating" id="averageRating">0.0</span>
+                                <span class="total-ratings">(<span id="totalRatings">0</span> ratings)</span>
+                            </div>
+                        </div>
+                        <div class="user-rating">
+                            <h4>Your Rating</h4>
+                            <div class="star-rating">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                                <i class="fas fa-star" data-rating="6"></i>
+                                <i class="fas fa-star" data-rating="7"></i>
+                                <i class="fas fa-star" data-rating="8"></i>
+                                <i class="fas fa-star" data-rating="9"></i>
+                                <i class="fas fa-star" data-rating="10"></i>
+                            </div>
+                            <div id="userRatingText">Not rated yet</div>
+                        </div>
+                    </div>
+                    <div class="list-actions">
+                        <button id="addToWatchlist" class="list-btn">
+                            <i class="fas fa-bookmark"></i> Add to Watchlist
+                        </button>
+                        <button id="addToFavorites" class="list-btn">
+                            <i class="fas fa-heart"></i> Add to Favorites
+                        </button>
+                    </div>
+                    <span id="movieYear"></span>
+                    <span id="movieDuration"></span>
+                </div>
+
+                <div class="genre-tags" id="movieGenres"></div>
+                
+                <div class="movie-overview">
+                    <h3>Overview</h3>
+                    <p id="movieOverview"></p>
+                </div>
+
+                <div class="movie-cast">
+                    <h3>Cast</h3>
+                    <div class="cast-list" id="castList"></div>
+                </div>
+
+                <div class="movie-trailer">
+                    <h3>Trailer</h3>
+                    <div id="trailerContainer"></div>
+                </div>
+
+                <div class="movie-comments">
+                    <h3>Comments</h3>
+                    <div class="comments-section">
+                        <form class="comment-form" id="commentForm">
+                            <textarea placeholder="Write your comment..." id="commentText" required></textarea>
+                            <button type="submit" id="submitComment">Submit</button>
+                        </form>
+                        <div class="comments-list" id="commentsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <button class="modal-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <button class="modal-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/tmdbService.js"></script>
+    <script type="module" src="js/authService.js"></script>
+    <script type="module" src="js/commentService.js"></script>
+    <script type="module" src="js/userService.js"></script>
+    <script type="module" src="js/movieDetail.js"></script>
+</body>
+</html> 
